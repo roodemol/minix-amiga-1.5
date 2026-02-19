@@ -1,0 +1,84 @@
+# Install the /usr file system
+
+cd /
+
+# Make prerequisite MINIX directories.
+while read d
+do
+	test -d $d && continue
+	echo + mkdir $d
+	mkdir $d
+done <<'EOF'
+/usr/adm
+/usr/doc
+/usr/etc
+/usr/lib
+/usr/man
+/usr/spool
+/usr/spool/at
+/usr/spool/lpd
+/usr/spool/mail
+/usr/spool/uucp
+/usr/tmp
+EOF
+
+echo "Insert the distribution disks one after another"
+echo "in the order suggested, unless you know better for sure."
+echo "If you want to stop feeding disks prematurely, type quit"
+# copy floppies
+for disk in 03 04 05 06 07 08 09
+do
+   echo -n "Please insert next disk (preferably $disk), then hit RETURN "
+   read x
+   case "$x" in
+   q*)	break;;
+   esac
+   /etc/mount /dev/dd0 /user
+   cpdir -msv /user /usr
+   /etc/umount /dev/dd0
+done
+
+# decompress
+find /usr/include /usr/lib /usr/src -name '*.Z' -print |
+	sed 's/\(.*\)\//\1 /' |
+	while read d f
+	do
+		echo "+ cd $d; compress -d $f"
+		cd $d
+		compress -d $f && rm -f $f
+	done
+cd /
+
+# extract archives
+find /usr/include /usr/src -name '*.a' -print |
+	sed 's/\(.*\)\//\1 /' |
+	while read d f
+	do
+		echo "+ cd $d; ar x $f"
+		cd $d
+		ar x $f && rm -f $f
+		chown bin *
+		chgrp bin *
+	done
+cd /
+
+# Make links to machine specific versions
+while read from to
+do
+	test -f $from || continue
+	echo "+ rm -f $to; ln $from $to"
+	rm -f $to
+	ln $from $to
+done <<'EOF'
+/usr/bin/compress /usr/bin/uncompress
+/usr/bin/compress /usr/bin/zcat
+/usr/bin/machine /usr/bin/chip
+/usr/bin/elvis /usr/bin/ex
+/usr/bin/elvis /usr/bin/vi
+/usr/bin/elvis /usr/bin/view
+/usr/bin/tos /usr/bin/tosdir
+/usr/bin/tos /usr/bin/tosread
+/usr/bin/tos /usr/bin/toswrite
+EOF
+
+echo Installation completed.
