@@ -1,0 +1,31 @@
+# Amiga MINIX 1.5.10 in FS-UAE (Amiga 500, built-in AROS ROM).
+# Paths are relative to this file.
+# Create the working copies first:
+#   utils/lha2adf.sh emu/images/1.5.10/amboot.lha emu/work/1.5.10/minix-boot.adf \
+#                    'BOOT:Minix -s 0 -e 512'
+#   utils/copydisks.sh emu/images/1.5.10 emu/work/1.5.10
+# No kickstart_file: without a Kickstart in its Kickstarts directory,
+# FS-UAE uses its built-in AROS ROM.
+[fs-uae]
+amiga_model = A500
+chip_memory = 512
+slow_memory = 512
+
+# DF0: boot disk, DF1: root disk (at "Insert ROOT diskette" enter 2,9)
+floppy_drive_count = 2
+floppy_drive_0 = ../work/1.5.10/minix-boot.adf
+floppy_drive_1 = ../work/1.5.10/disk02.img
+
+# Disk swap list (F12 -> floppy drive)
+floppy_image_0 = ../work/1.5.10/minix-boot.adf
+floppy_image_1 = ../work/1.5.10/disk02.img
+floppy_image_2 = ../work/1.5.10/disk03.img
+floppy_image_3 = ../work/1.5.10/disk04.img
+floppy_image_4 = ../work/1.5.10/disk05.img
+floppy_image_5 = ../work/1.5.10/disk06.img
+floppy_image_6 = ../work/1.5.10/disk07.img
+floppy_image_7 = ../work/1.5.10/disk08.img
+floppy_image_8 = ../work/1.5.10/disk09.img
+
+# Write changes directly into the working copies (not into overlay files)
+writable_floppy_images = 1

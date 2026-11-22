@@ -1,0 +1,4 @@
+*.adf binary
+*.img binary
+*.lha binary
+emu/images/** binary
