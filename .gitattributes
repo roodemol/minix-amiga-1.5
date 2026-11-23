@@ -2,3 +2,4 @@
 *.img binary
 *.lha binary
 emu/images/** binary
+*.tgz binary

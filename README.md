@@ -12,7 +12,7 @@ This repository contains:
 - `utils/` – scripts that turn them into working copies for the emulator
   (a bootable ADF from `amboot.lha`, copies of the 720 KB floppies)
 - `emu/config/` – the FS-UAE configuration
-- `disk/` – the unpacked contents of the floppies, extracted with Christian
+- `disk/1.5.10` – the unpacked contents of the floppies, extracted with Christian
    Vogelgsang's [`minix1-unwrap`](https://github.com/cnvogelg/minix1-unwrap/tree/main)
    so the sources and files can be read directly without an emulator.
 
@@ -88,7 +88,8 @@ minix-amiga-1.5/
 ├── README.md                    # this guide
 ├── .gitignore                   # excludes emu/work/
 ├── .gitattributes               # marks the images as binary
-├── disk/                        # unpacked file tree (for reading)
+├── disk/                      
+│   └── 1.5.10/                  # unpacked file tree (for reading)
 ├── utils/
 │   ├── lha2adf.sh               # bootable ADF from an LHA archive
 │   └── copydisks.sh             # working copies of the 720 KB floppies

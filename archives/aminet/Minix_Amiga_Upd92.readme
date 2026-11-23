@@ -1,0 +1,18 @@
+Short:        Update Minix 1.5.10 to 1.5.10.2
+Author:       Steven Reiz
+Uploader:     aminet aminet net
+Type:         misc/os
+Version:      1.5.10.2
+Architecture: other
+
+This archive contains two update patches (including sources) for Amiga
+Minix 1.5.10 (see misc/os/Minix_Amiga.tgz). Thanks a lot to Thomas Unger
+for providing them. These patches were supplied by Steven Reiz and
+represent the latest version of Amiga Minix.
+
+With these patches, Minix supports 68030 CPUs and harddrives.
+
+For more Information about Amiga Minix or Minix in general, visit Thomas
+Unger's excellent Amiga Minix site:
+
+http://home.arcor.de/kickstart/TKA/Tutorials/AmigaMINIX/aminix.html
