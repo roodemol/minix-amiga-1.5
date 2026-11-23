@@ -12,9 +12,9 @@ This repository contains:
 - `utils/` – scripts that turn them into working copies for the emulator
   (a bootable ADF from `amboot.lha`, copies of the 720 KB floppies)
 - `emu/config/` – the FS-UAE configuration
-- `disk/` – the unpacked contents of the floppies, for reading
-  the sources and files without an emulator
-
+- `disk/` – the unpacked contents of the floppies, extracted with Christian
+   Vogelgsang's [`minix1-unwrap`](https://github.com/cnvogelg/minix1-unwrap/tree/main)
+   so the sources and files can be read directly without an emulator.
 
 ## License
 
@@ -85,8 +85,7 @@ installed.
 ```
 minix-amiga-1.5/
 ├── LICENSE                      # MINIX BSD licence (Prentice Hall, April 2000)
-├── README.md
-├── EMULATION.md                 # this guide
+├── README.md                    # this guide
 ├── .gitignore                   # excludes emu/work/
 ├── .gitattributes               # marks the images as binary
 ├── disk/                        # unpacked file tree (for reading)
@@ -214,7 +213,7 @@ wherever the repository is cloned.
 fs-uae emu/config/minix-1.5.10.fs-uae
 ```
 
-1. AROS boots from DF0:, the boot disk `emu/work/1.5.10/minix-boot.adf` that
+1. AROS boots from `DF0:`, the boot disk `emu/work/1.5.10/minix-boot.adf` that
    `utils/lha2adf.sh` created from `amboot.lha` (section 3a). It runs the
    start-up sequence, which calls the MINIX loader, and the loader loads the
    kernel. After a little less than a minute (emulated floppy speed):
@@ -224,9 +223,10 @@ fs-uae emu/config/minix-1.5.10.fs-uae
    Insert ROOT diskette and hit RETURN (or specify bootdev)
    ```
 
-2. **Type `2,9` and press RETURN.** This is device major 2 (floppy), minor 9
-   (`dd1`, drive DF1:), where `disk02` is. RETURN alone would read DF0: (`dd0`,
-   2,8), which still holds the boot disk.
+2. Load the root disk from `DF1:`: **Type `2,9` and press RETURN.** This is
+   device major 2 (floppy), minor 9 (`dd1`, drive `DF1:`), where `disk02.img`
+   is inserted. Pressing RETURN alone would read `DF0:` (`dd0`, 2,8), which
+   still holds the boot disk.
 
    MINIX loads the root disk into the RAM disk:
 
@@ -236,11 +236,17 @@ fs-uae emu/config/minix-1.5.10.fs-uae
    Please insert /usr diskette in drive 0.  Then hit RETURN.
    ```
 
-3. **Insert the `/usr` disk:** press **F12** → drive DF0: → choose
-   `disk03.img`, close the menu, then press RETURN. *(Not yet tested.)*
-   If you press RETURN without swapping, `/etc/rc` reports “/dev/dd0 is not a
-   valid file system” and errors about `/usr/bin/…`; the system still runs,
-   just without `/usr`.
+3. **Mount the `/usr` disk (`disk03.img`) in `DF0:`:**
+   1. Press **F12** to open the FS-UAE menu.
+   2. Select drive **DF0:** and replace `minix-boot.adf` with `disk03.img`
+      (the boot disk is no longer needed once the kernel is running).
+   3. Close the menu with **F12** or **ESC**, then press **RETURN** at the
+      MINIX prompt.
+  
+   `/etc/rc` automatically mounts `/dev/dd0` (`DF0:`) on `/usr`, making the
+   system binaries in `/usr/bin` available. (If you press RETURN without
+   swapping `disk03.img` into `DF0:`, `/etc/rc` reports “/dev/dd0 is not a
+   valid file system” and skips `/usr`.)
 
 4. Log in:
 
