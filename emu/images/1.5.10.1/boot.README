@@ -1,0 +1,4 @@
+boot.lzh contains the complete boot disk
+of the first 1.5 AmigaMINIX update.
+You can install it by extracting it onto an empty floppy
+called BOOT.

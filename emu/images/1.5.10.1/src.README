@@ -1,0 +1,14 @@
+src.tar.Z contains the source patches of the 
+first 1.5 AmigaMINIX update, as well as a new
+/dev/Makedev and /bin/format.
+
+You can install it by transferring the compressed tarfile to
+minix (using the minix transfer utility on the AmigaDOS side
+and on the minix side.)
+There you can decompress and untar it onto an empty floppy.
+When trying to apply the patches you can run out of memory,
+both on the root filesystem and in patch itself.  The first
+problem can be solved by removing most or all of the binaries
+from /bin, or by using a larger ram disk/root filesystem.
+The second problem can be solved by giving patch more stack
+space, with chmem (64 kb should probably be enough.)

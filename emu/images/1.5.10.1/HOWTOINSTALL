@@ -1,0 +1,87 @@
+7 easy steps to the successful installation of AmigaMINIX:
+
+At all times keep all original distribution floppies write protected!
+
+1. make a backup of the BOOT floppy with a copy program that can copy
+   AmigaDOS disks, if you use diskcopy you'll have to use relabel to
+   give the copy the name BOOT.
+2. insert the BOOT floppy in the internal drive and reset the computer.
+3. insert the root floppy when prompted to do so.
+4. login as root
+5. chmem +8192 /bin/ls; chmem +8192 /bin/rm
+	(this is made necessary by changes that we made in the new version)
+6. make backups of all floppies except the BOOT floppy, as described in
+   the manual.
+
+We assume that you use the copies of the floppies for all operations
+described below.
+
+7. to make step 5 permanent:
+7a. copy chmem to /bin.
+7b. for each of floppies 2 to 5:
+
+	insert the floppy in the internal drive and type:
+
+	/etc/mount /dev/dd0 /user
+	cd /user/bin
+	for i in *
+	do
+	chmem +8192 $i
+	done
+	cd /
+	/etc/umount /dev/dd0
+
+Using your Commodore hard disk with AmigaMINIX:
+
+When MINIX boots, a partition table is printed.
+The format is: minor device number, size, name.
+Example:
+
+   1        0  MDH0      # a SCSI hard disk with 3 partitions
+   2       33  MDH2
+   3       33  MDH1
+ 225       10  DH0       #  XT IDE drive found
+ 226        7  MINIX
+ 227        1  DH1
+ 228        0  MBOOT
+
+If the information does not roughly correspond with the information given
+by HDToolBox DO NOT MAKE an AmigaMINIX partition, since that may overwrite
+your AmigaDOS partitions.
+SCSI LUNs (logical unit numbers) other than 0 are not supported.
+
+Setting up your harddisk for AmigaMINIX:
+
+- Create a partition on your harddisk called "MINIX" of at least
+  8 MB. If you don't want to have the command sources online 5 MB
+  will do.
+- Look up the minor device number of your MINIX partition in the
+  partition table. Using the above partition table, this is 226.
+- Compute the size of the MINIX partition in kilobytes, here 7168.
+- Create the device node to access the partition.
+  cp /usr/bin/chmod /usr/bin/mknod /bin
+  /etc/umount /dev/dd0
+  insert floppy 7 into the internal floppy drive
+  /etc/mount /dev/dd0 /usr
+  cd /dev; rm *hd*
+  /usr/Makedev
+  /etc/umount /dev/dd0
+  insert floppy 3 into the internal floppy drive
+  /etc/mount /dev/dd0 /usr
+  ls -l /dev | grep 226          # the minor device number
+  If no filename shows up you'll have to make the node yourself, e.g.
+  mknod /dev/s00p1 b 3 1   0     # scsi disk on address 0, partition 1
+  mknod /dev/xt0p2 b 3 226 0     # xt disk, partition 2
+- Create the MINIX /usr filesystem, using the device name just found.
+  mkfs /dev/xt0p2 7168
+- Copy the distribution floppies to /usr.
+  cd /
+  rm /bin/mknod /bin/chmod
+  cp /usr/bin/test /usr/bin/echo /usr/bin/cpdir /bin
+  /etc/umount /dev/dd0
+  /etc/mount /dev/xt0p2 /usr
+  /etc/setup_usr
+- Correct the timestamps of some include files.
+  cd /usr/include/minix; touch *
+
+The /usr partition on the hard disk is now ready for use.

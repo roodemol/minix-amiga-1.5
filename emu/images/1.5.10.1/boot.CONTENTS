@@ -1,0 +1,49 @@
+   SIZE  RATIO     STAMP    NAME
+------- ------ ------------ --------------------
+     24 100.0% Jun 19 22:38 .info
+    306  50.9% Jun 19 22:38 Disk.info
+  19280  55.4% Jun 19 22:39 minix
+ 184320  27.1% Jun 20 14:28 minix.img
+   1930  46.6% Jun 19 22:39 minix_keymap
+   4468  65.5% Jun 19 22:38 WbMinix
+   2005  41.4% Jun 19 22:38 WbMinix.info
+   5940  55.0% Jun 12 23:34 c/cat
+  11708  53.7% Jun  1  1990 c/transfer
+   7860  55.3% Jun  1  1990 c/transmap
+    232  49.5% Jun 12 22:44 devs/system-configuration
+    299  60.8% Jun 19 02:38 s/message
+    230  72.1% Jun 19 02:34 s/second-startup-sequence
+    237  71.7% Jun 19 02:34 s/startup-sequence
+   1336  67.3% Jun  1  1990 devs/keymaps/m_cdn
+   1356  67.2% Jun  1  1990 devs/keymaps/m_ch1
+   1356  67.3% Jun  1  1990 devs/keymaps/m_ch2
+   1316  67.0% Jun  1  1990 devs/keymaps/m_d
+   1336  66.9% Jun  1  1990 devs/keymaps/m_dk
+   1344  66.9% Jun  1  1990 devs/keymaps/m_e
+   1324  67.3% Jun  1  1990 devs/keymaps/m_f
+   1304  67.1% Jun  1  1990 devs/keymaps/m_gb
+   1316  68.1% Jun  1  1990 devs/keymaps/m_i
+   1316  67.5% Jun  1  1990 devs/keymaps/m_is
+   1336  66.9% Jun  1  1990 devs/keymaps/m_n
+   1304  67.1% Jun  1  1990 devs/keymaps/m_nl
+   1336  66.9% Jun  1  1990 devs/keymaps/m_s
+    968  63.7% Jun  1  1990 devs/keymaps/m_usa0
+   1304  67.7% Jun  1  1990 devs/keymaps/m_usa1
+   1264  67.0% Jun  1  1990 devs/keymaps/m_usa2
+    480  70.4% Jun 12 23:34 src/amtools/cat.c
+   4836  33.1% Jun  1  1990 src/amtools/transmap.c
+    123  91.0% Jun 19 22:22 src/amtools/wbminix.c
+   5031  38.7% Jun 19 22:37 src/loader/amtransfer.h
+  19280  55.4% Jun 19 22:37 src/loader/loader
+  19812  36.1% Jun 19 22:37 src/loader/loader.c
+   2606  52.8% Jun 19 22:37 src/loader/loader.doc
+   2728  41.4% Jun 19 22:37 src/loader/loaderasm.s
+    109  69.7% Jun 19 22:37 src/loader/make.sas
+    469  61.4% Jun 19 22:37 src/loader/makefile
+   2881  42.5% Jun  1  1990 src/amtools/transfer/amtransfer.c
+    704  37.0% Jun  1  1990 src/amtools/transfer/cia.h
+  16730  35.3% Jun  1  1990 src/amtools/transfer/fl.c
+   1017  32.4% Jun  1  1990 src/amtools/transfer/paula.h
+    264  55.6% Jun  1  1990 src/amtools/transfer/type.h
+------- ------ ------------ --------------------
+ 336725  37.6% Sep 17  1903   45 files 

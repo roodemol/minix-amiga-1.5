@@ -1,0 +1,5 @@
+# Kickstart and expansion ROMs are copyrighted and are not part of
+# this repository.  Put your own copies here (e.g. from Amiga Forever).
+*
+!.gitignore
+!README.md

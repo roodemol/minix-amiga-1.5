@@ -1,0 +1,27 @@
+Short:        Documentation and FAQs for Amiga Minix
+Author:       Andrew S. Tanenbaum, Raymond Michiels, Steven Reiz and Johan W. Stevenson
+Uploader:     aminet aminet net
+Type:         misc/os
+Version:      1.5.10
+Architecture: generic
+
+This archive contains the full documentation for Amiga Minix 1.5 in PDF format,
+plus a few text files with FAQs and announcements.
+
+Contents:
+
+contents.pdf    - TABLE OF CONTENTS 
+intro.pdf       - Chapter 1. INTRODUCTION (all platforms) 
+installing.pdf  - Chapter 4. MINIX ON THE COMMODORE AMIGA 
+using.pdf       - Chapter 6. USING MINIX (all platforms) 
+recompiling.pdf - Chapter 7. RECOMPILING MINIX (all platforms) 
+demoman.pdf     - Reference Manual for the MINIX 1.5 Demo Disk (all platforms) 
+manpage1.zip    - Updated Manual Pages 
+manpage2.zip    - Updated Manual Pages
+
+MINIX_answers.txt - by Steven Reiz & Raymond Michiels (Date: 1989-07-25)
+AMINIX15_FAQ.txt  - by Steven Reiz (Date: 1990-09-24)
+Announcement.txt  - Minix announcement/information sheet
+MINIX_final.txt   - Minix final version announcement
+
+LICENSE.txt       - The Minix license
